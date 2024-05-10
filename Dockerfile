@@ -2,7 +2,7 @@ FROM bitnami/java:11-debian-11
 
 LABEL org.opencontainers.image.source https://github.com/ivanmorenoj/sonar-cnes-report
 
-ARG SONAR_CNES_REPORT_VERSION=4.2.0
+ARG SONAR_CNES_REPORT_VERSION=4.3.0
 
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
       dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
