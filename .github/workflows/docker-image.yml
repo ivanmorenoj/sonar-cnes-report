@@ -41,8 +41,10 @@ jobs:
           context: .
           push: true
           build-args: SONAR_CNES_REPORT_VERSION=${{ vars.SONAR_CNES_REPORT_VERSION_ARG }}
-          tags: latest, ${{ vars.SONAR_CNES_REPORT_VERSION_ARG }}
           labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ vars.SONAR_CNES_REPORT_VERSION_ARG }}
       
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1.1.1
