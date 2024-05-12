@@ -14,6 +14,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
       attestations: write
 
     steps:
@@ -39,12 +40,12 @@ jobs:
         with:
           context: .
           push: true
-          build-args: SONAR_CNES_REPORT_VERSION=${{vars.SONAR_CNES_REPORT_VERSION_ARG}}
-          tags: latest, ${{vars.SONAR_CNES_REPORT_VERSION_ARG}}
+          build-args: SONAR_CNES_REPORT_VERSION=${{ vars.SONAR_CNES_REPORT_VERSION_ARG }}
+          tags: latest, ${{ vars.SONAR_CNES_REPORT_VERSION_ARG }}
           labels: ${{ steps.meta.outputs.labels }}
       
       - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v1.1.1
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
