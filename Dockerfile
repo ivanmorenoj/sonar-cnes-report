@@ -1,4 +1,4 @@
-FROM bitnami/java:11-debian-11
+FROM docker.io/bitnami/java:11-debian-11
 
 LABEL org.opencontainers.image.source https://github.com/ivanmorenoj/sonar-cnes-report
 
